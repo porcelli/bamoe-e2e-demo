@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_C19F5C48-8CA9-4D60-A6A9-D158B01DFBC" id="CreditLimit" name="CreditLimit">
+  <inputData name="Credit Score" id="_29F19DFF-80B6-4437-B729-F8F289B68C66">
+    <variable name="Credit Score" id="_774222E6-985E-4794-BE5A-888B867A0E21" typeRef="number" />
+  </inputData>
+  <decision name="Credit Limit" id="_7D4061B5-433E-4565-A4C2-E51C03870E19">
+    <variable id="_434F2EEB-4758-41CC-A00A-590B96A701B4" typeRef="number" name="Credit Limit" />
+    <informationRequirement id="_D4407856-7DDA-4010-8F66-504E14CDCFD5">
+      <requiredInput href="#_29F19DFF-80B6-4437-B729-F8F289B68C66" />
+    </informationRequirement>
+    <informationRequirement id="_5ACDE524-5F18-4011-BAE4-590FA12AAD52">
+      <requiredInput href="#_5FA137D6-C101-455E-ACB5-5D9E472AB9DE" />
+    </informationRequirement>
+    <decisionTable id="_BC5FC3D6-9604-47D1-B0DD-42AF811B9525" typeRef="number" hitPolicy="FIRST" label="Credit Limit">
+      <input id="_36926C5D-8844-45A9-A072-C5C031DCC56B">
+        <inputExpression id="_FF917DD6-5AA3-4E73-9FE1-B3D9BF0D34D6" typeRef="number">
+          <text>Credit Score</text>
+        </inputExpression>
+      </input>
+      <input id="_1DDA16D1-C27D-471D-89F8-FEA0D7A848AE">
+        <inputExpression id="_A0AAF33C-F5BE-4EAF-B45D-A332D0680FB7" typeRef="number">
+          <text>Income</text>
+        </inputExpression>
+      </input>
+      <output id="_48F85E28-E356-4CAC-9161-238E815813F7" name="Output-1" />
+      <annotation name="Annotations" />
+      <rule id="_1F772475-C414-4C35-9195-D8FB706654C7">
+        <inputEntry id="_7AAADC8F-857A-4164-96A6-756942626CAD">
+          <text>&lt;600</text>
+        </inputEntry>
+        <inputEntry id="_277A2C1A-B5B5-49F8-A8CC-448C614110DE">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="_AB909D8B-DE13-4509-8773-E9B77438866E">
+          <text>0</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_CB244652-745D-4532-AB82-F5A44C47E186">
+        <inputEntry id="_8EF6997F-1C0E-425D-9E91-8DC2D91190BF">
+          <text>[600..650)</text>
+        </inputEntry>
+        <inputEntry id="_35859F11-973F-4AF5-AE71-17A8F7114F98">
+          <text>&lt;5000</text>
+        </inputEntry>
+        <outputEntry id="_0AB5BC99-9F5D-4A97-899F-0D8105D2FB0B">
+          <text>1000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_79CEEB27-64C0-4411-89E0-00D5A0BAF1C9">
+        <inputEntry id="_D5E49EF4-ACAC-4AB7-84C0-239E787DCED4">
+          <text>[600..700)</text>
+        </inputEntry>
+        <inputEntry id="_0137E923-6286-440B-A25F-5BEA9BC2D90E">
+          <text>[5000..10000)</text>
+        </inputEntry>
+        <outputEntry id="_A55EA5F9-1A3B-4559-BCF8-AA33FE998F6C">
+          <text>2000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_9354A80C-2255-4387-8AD4-C4815F586603">
+        <inputEntry id="_77105502-3C9D-427D-A842-4FA84165356E">
+          <text>[600..700)</text>
+        </inputEntry>
+        <inputEntry id="_59A4F81D-FF7C-4253-B119-D8C44ACD228C">
+          <text>&gt;10000</text>
+        </inputEntry>
+        <outputEntry id="_CBF84FCE-ABF0-41FD-B7D4-951FC4B966D8">
+          <text>3000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_1043FA29-3775-42E7-AE32-307B1B6C2776">
+        <inputEntry id="_77130CA4-2E7F-44A3-B5E9-E8922C321D38">
+          <text>&gt;=700</text>
+        </inputEntry>
+        <inputEntry id="_93784783-FA86-438C-AE28-B5CF1D0530D6">
+          <text>&gt;=50000</text>
+        </inputEntry>
+        <outputEntry id="_060538B2-E686-4D45-BDED-FA51C50AFB7A">
+          <text>10000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_5A61AF05-E881-4012-BFFC-26211D99CF1A">
+        <inputEntry id="_64B54D22-5300-4D8C-9819-1B47DFD11F35">
+          <text>[700..750)</text>
+        </inputEntry>
+        <inputEntry id="_AC209075-5E0D-42BF-A00C-4B96B4BC6BAE">
+          <text>&lt;10000</text>
+        </inputEntry>
+        <outputEntry id="_B98AB0CE-F966-4F34-B40C-4E70DF15A0CD">
+          <text>2500</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_7A0089A6-7FF7-4A46-BF42-11DC4AE32F90">
+        <inputEntry id="_E51955F1-A516-4F82-856C-7A7114595962">
+          <text>[700..750)</text>
+        </inputEntry>
+        <inputEntry id="_985A449C-B36E-4AF8-811B-9DCC8D25D89C">
+          <text>[10000..15000)</text>
+        </inputEntry>
+        <outputEntry id="_D180009D-A97D-4562-B8D5-B896155C7B35">
+          <text>3500</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_8A795C62-A8A1-4004-A5F7-AF7FDE4656B3">
+        <inputEntry id="_E27973E8-387C-4A3B-A5BA-C76DC8DC2C15">
+          <text>[700..750)</text>
+        </inputEntry>
+        <inputEntry id="_96BE2818-D90C-4ACE-9F9F-E4363E706480">
+          <text>&gt;15000</text>
+        </inputEntry>
+        <outputEntry id="_4F43BB72-9F51-4CBF-89D3-9CDAB73A136C">
+          <text>4000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_A6101472-F7C9-41F7-8CEA-CDE975E7EF3E">
+        <inputEntry id="_05B1A211-EE01-41C9-AD5D-315765EDE0A6">
+          <text>&gt;=750</text>
+        </inputEntry>
+        <inputEntry id="_BD95420B-0EEA-4386-990B-51FE4E72FC93">
+          <text>&lt;10000</text>
+        </inputEntry>
+        <outputEntry id="_4AC80601-7126-4AB8-809B-F8BB3461D576">
+          <text>2800</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_287FBA5F-5022-42B9-A709-8599F108292F">
+        <inputEntry id="_D9600881-AA41-400E-8337-09F29EAB7432">
+          <text>&gt;=750</text>
+        </inputEntry>
+        <inputEntry id="_1037519F-3AB3-4F8F-8CC1-D5EC97C292D3">
+          <text>[10000..20000)</text>
+        </inputEntry>
+        <outputEntry id="_845334B7-2CC9-48F1-967F-43F555FDB0C7">
+          <text>4000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_2B0175D2-7C9A-48E0-BFF9-014F184B2297">
+        <inputEntry id="_CB4BD510-5EFE-4A36-9895-E7B6F2924133">
+          <text>&gt;=750</text>
+        </inputEntry>
+        <inputEntry id="_5CA3F352-52AA-4152-AC8B-08A4A8F4784E">
+          <text>&gt;=20000</text>
+        </inputEntry>
+        <outputEntry id="_29A63393-F04E-41EC-BA03-4760044A58BC">
+          <text>5000</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData name="Income" id="_5FA137D6-C101-455E-ACB5-5D9E472AB9DE">
+    <variable name="Income" id="_8A363CB3-90F4-4775-AF45-62148A184C17" typeRef="number" />
+  </inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_44251FAE-4B05-4B87-B949-99E957E15E44" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_BC5FC3D6-9604-47D1-B0DD-42AF811B9525">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>138</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>226</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_F84CB8F0-090D-445C-B01F-5A1F52CE271E" dmnElementRef="_29F19DFF-80B6-4437-B729-F8F289B68C66" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="60" y="300" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_A12CBC39-0252-491F-B635-531869E2DA76" dmnElementRef="_7D4061B5-433E-4565-A4C2-E51C03870E19" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="180" y="100" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_CFE626BF-A960-4400-AC70-051B4E5BE0F7-AUTO-TARGET" dmnElementRef="_D4407856-7DDA-4010-8F66-504E14CDCFD5" sourceElement="_F84CB8F0-090D-445C-B01F-5A1F52CE271E" targetElement="_A12CBC39-0252-491F-B635-531869E2DA76">
+        <di:waypoint x="140" y="340" />
+        <di:waypoint x="260" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="_78F54B66-CF19-4088-8A11-62961F982D14" dmnElementRef="_5FA137D6-C101-455E-ACB5-5D9E472AB9DE" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="300" y="300" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_461749CB-7AF9-4E54-BA1E-88241A8E1960" dmnElementRef="_5ACDE524-5F18-4011-BAE4-590FA12AAD52" sourceElement="_78F54B66-CF19-4088-8A11-62961F982D14" targetElement="_A12CBC39-0252-491F-B635-531869E2DA76">
+        <di:waypoint x="380" y="340" />
+        <di:waypoint x="260" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

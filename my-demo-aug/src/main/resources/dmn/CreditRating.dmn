@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_6319C4A3-ED49-438B-BB0F-568B0EFF70C8" id="CreditRating" name="CreditRating">
+  <inputData name="Credit Score" id="_33D0452C-9AB0-44A1-9AE9-D4CA43E1121D">
+    <variable name="Credit Score" id="_6C44D2AC-8E34-4B80-A038-8B7BFEC5F7DE" typeRef="number" />
+  </inputData>
+  <decision name="Rating" id="_D098EF32-B84D-42F6-B6FF-B6E8FEA4212B">
+    <variable id="_B8CEFC07-721B-4841-83EA-354E3E5181FE" typeRef="string" name="Rating" />
+    <informationRequirement id="_8E48B7D9-DD4E-47AA-9998-03810835C065">
+      <requiredInput href="#_33D0452C-9AB0-44A1-9AE9-D4CA43E1121D" />
+    </informationRequirement>
+    <decisionTable id="_060CBC1A-4127-4288-BDF7-4CCA2EAE5C23" typeRef="string" hitPolicy="UNIQUE" label="Rating">
+      <input id="_FDC173F5-DBE4-418E-9C87-049D8A73FBE0">
+        <inputExpression id="_C0C86B5B-314A-4CFE-AB26-B46A1037EEB2" typeRef="number">
+          <text>Credit Score</text>
+        </inputExpression>
+      </input>
+      <output id="_57383DDA-3883-4F75-AEAD-344087D6449A" name="Output-1" />
+      <annotation name="Annotations" />
+      <rule id="_FD33A9DF-0FE3-4B85-921A-83F0F1ABD76B">
+        <inputEntry id="_857E8147-70F9-4738-9004-902CB2479B3E">
+          <text>[0..600)</text>
+        </inputEntry>
+        <outputEntry id="_DC954A78-2073-4B26-94DC-A8E94F0B2AD2">
+          <text>&quot;denied&quot;</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Your annotations here</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_AA66E0ED-F723-4270-81E5-A4D41AC18233">
+        <inputEntry id="_6FA1065E-D6D5-4CDA-A812-734C33CEC5D6">
+          <text>[600..700)</text>
+        </inputEntry>
+        <outputEntry id="_9BF8DFA3-6B0E-4A89-85A8-E98B6FF95BA6">
+          <text>&quot;verify&quot;</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_AEE34C69-5B1C-4354-BAD7-F1D1C4BDB303">
+        <inputEntry id="_AD0F56DA-BA8A-495E-8942-4D1FF956DACB">
+          <text>&gt;=700</text>
+        </inputEntry>
+        <outputEntry id="_CD23EBFB-C24C-4BDE-A575-126947BA9777">
+          <text>&quot;approved&quot;</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_DCB76973-9268-407D-AD28-82D71A2FBC18" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_060CBC1A-4127-4288-BDF7-4CCA2EAE5C23">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_4851B277-507D-4DBB-9854-65B720A186B5" dmnElementRef="_33D0452C-9AB0-44A1-9AE9-D4CA43E1121D" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="100" y="340" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_A9AEB861-951A-4D59-B46A-EE4DCD3C87E5" dmnElementRef="_D098EF32-B84D-42F6-B6FF-B6E8FEA4212B" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="100" y="100" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_55D1A255-F1AF-4CAD-8976-07D3E74504F3-AUTO-TARGET" dmnElementRef="_8E48B7D9-DD4E-47AA-9998-03810835C065" sourceElement="_4851B277-507D-4DBB-9854-65B720A186B5" targetElement="_A9AEB861-951A-4D59-B46A-EE4DCD3C87E5">
+        <di:waypoint x="180" y="380" />
+        <di:waypoint x="180" y="140" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
